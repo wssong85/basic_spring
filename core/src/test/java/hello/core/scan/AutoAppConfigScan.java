@@ -2,6 +2,7 @@ package hello.core.scan;
 
 import hello.core.AutoAppConfig;
 import hello.core.member.MemberService;
+import hello.core.order.OrderService;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,5 +17,14 @@ public class AutoAppConfigScan {
 
     MemberService memberService = ac.getBean(MemberService.class);
     assertInstanceOf(MemberService.class, memberService);
+
+    OrderService orderService = ac.getBean(OrderService.class);
+    System.out.println("orderService = " + orderService);
+  }
+
+  @Test
+  void fieldInjectionTest() {
+//    OrderServiceImpl orderService = new OrderServiceImpl();
+//    orderService.createOrder()
   }
 }
