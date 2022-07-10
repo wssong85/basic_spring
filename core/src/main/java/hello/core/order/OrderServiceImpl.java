@@ -1,10 +1,10 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
@@ -12,7 +12,15 @@ import org.springframework.stereotype.Component;
 public class OrderServiceImpl implements OrderService{
 
   private final DiscountPolicy discountPolicy;
+
+  @MainDiscountPolicy
   private final MemberRepository memberRepository;
+
+//  public OrderServiceImpl(@MainDiscountPolicy DiscountPolicy discountPolicy, MemberRepository memberRepository) {
+//    System.out.println("discountPolicy = " + discountPolicy);
+//    this.discountPolicy = discountPolicy;
+//    this.memberRepository = memberRepository;
+//  }
 
   @Override
   public Order createOrder(Long memberId, String itemName, int itemPrice) {
